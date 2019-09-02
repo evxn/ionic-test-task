@@ -1,8 +1,8 @@
 {
-  "name": "myApp",
+  "name": "ionic-slide-to-accept-modal",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "Evgeniy Malyutin",
+  "homepage": "https://github.com/evxn/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
