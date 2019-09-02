@@ -15,7 +15,6 @@ interface PanEvent {
 	isFirst: boolean;
 	isFinal: boolean;
 	preventDefault: () => void;
-	stopPropagation: () => void;
 }
 
 const ANIMATION_DURATION = 300;
