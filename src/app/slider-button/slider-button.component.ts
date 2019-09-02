@@ -27,7 +27,7 @@ export class SliderButtonComponent {
 	@ViewChild('container', {static: true}) container: ElementRef;
 
 	@Input() label: string;
-	@Input() magnetThreshold = 0.8;
+	@Input() magnetThreshold = .9;
 	@Output() valueChange = new EventEmitter<number>();
 
 	private animationTimer: number;
