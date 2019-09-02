@@ -9,10 +9,13 @@ import {
 
 interface PanEvent {
 	deltaX: number;
+	deltaY: number;
 	velocityX: number;
 	distance: number;
 	isFirst: boolean;
 	isFinal: boolean;
+	preventDefault: () => void;
+	stopPropagation: () => void;
 }
 
 const ANIMATION_DURATION = 300;
@@ -28,6 +31,7 @@ export class SliderButtonComponent {
 
 	@Input() label: string;
 	@Input() magnetThreshold = .9;
+	@Input() tolerateVerticalMovementThreshold = 50;
 	@Output() valueChange = new EventEmitter<number>();
 
 	private animationTimer: number;
@@ -42,6 +46,12 @@ export class SliderButtonComponent {
 		requestAnimationFrame(() => {
 			let x = event.deltaX < max ? event.deltaX : max;
 			x = event.deltaX < 0 ? 0 : x;
+
+			if (Math.abs(event.deltaY) > this.tolerateVerticalMovementThreshold) {
+				this.reset();
+				event.preventDefault();
+				return;
+			}
 
 			if (event.isFinal) {
 				if (x / max > this.magnetThreshold) {
