@@ -1,0 +1,67 @@
+<div class="container">
+	<div class="d-flex ion-justify-content-center ion-margin-bottom">
+		<div class="top-label-frame">
+			<div class="top-label">#S312313</div>
+		</div>
+	</div>
+
+	<div class="d-flex ion-align-items-center ion-margin-bottom">
+		<div class="name primary-info-color">Johnathan</div>
+		<div class="bonus ion-text-uppercase">$20 bonus</div>
+	</div>
+
+	<div class="d-flex w-100 ion-align-items-center ion-justify-content-end secondary-info secondary-info-color semi-bold ">
+		<ion-grid>
+			<ion-row>
+				<ion-col size="6">
+					<ion-grid class="left-side">
+						<ion-row>
+							<ion-col class="d-flex ion-justify-content-center num-of-bags secondary-info-color">5</ion-col>
+							<ion-col class="d-flex ion-justify-content-center cost ion-margin-end">$31
+							</ion-col>
+						</ion-row>
+						<ion-row>
+							<ion-col class="d-flex ion-align-items-start ion-justify-content-center text-small ion-text-uppercase">
+									bags
+							</ion-col>
+							<ion-col
+									class="d-flex ion-align-items-start ion-justify-content-center text-small ion-text-uppercase ion-margin-end">
+									estimate
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+				</ion-col>
+				<div class="separator"></div>
+				<ion-col size="6" class="d-flex ion-align-items-center">
+					<ion-grid class="right-side">
+						<ion-row>
+							<ion-col class="location secondary-info-color ion-margin-start">
+								Baltimore, MD
+							</ion-col>
+						</ion-row>
+						<ion-row>
+							<ion-col class="text-small ion-margin-start">
+									25 min / 5.0 mile drive
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</div>
+
+	<ion-item #confirmation
+			  class="confirmation primary-info-color semi-bold text-small d-flex ion-align-items-center ion-margin-bottom"
+			  lines="none">
+		<ion-checkbox slot="start"
+					  class="square-checkbox"
+					  [(ngModel)]="confirmed"
+		></ion-checkbox>
+		<ion-label>I confirm lorem ipsum dolor sit amet.</ion-label>
+	</ion-item>
+
+	<app-slider-button #slider
+					   label="Slide To Accept"
+					   (valueChange)="onSlide($event)">
+	</app-slider-button>
+</div>

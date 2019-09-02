@@ -1,0 +1,43 @@
+:host {
+	--slider-button-padding: 3px;
+
+	.slider-container {
+		background: linear-gradient(to right, #ffb600, #FF00CC);
+		height: 50px;
+		border-radius: 25px;
+		padding: var(--slider-button-padding);
+
+		.slider-button {
+			--size: 44px;
+			background-color: var(--ion-color-primary-contrast);
+			color: var(--ion-color-light-shade);
+			width: var(--size);
+			height: var(--size);
+			border-radius: 22px;
+			z-index: 2110;
+
+			ion-icon {
+				font-size: 24px;
+			}
+
+			.touch-area {
+				position: absolute;
+				width: calc(var(--size) * 1.5);
+				height: calc(var(--size) * 1.2);
+			}
+
+			&.is-animating {
+				transition: transform 300ms cubic-bezier(.5, 0, .5, 1);
+			}
+		}
+
+		.slider-label {
+			color: var(--ion-color-danger-contrast);
+			position: absolute;
+			width: calc(100% - 6px - 33px);
+			text-align: center;
+			font-weight: 300;
+			touch-action: none;
+		}
+	}
+}

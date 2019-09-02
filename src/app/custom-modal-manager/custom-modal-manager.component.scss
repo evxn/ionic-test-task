@@ -1,0 +1,101 @@
+:host {
+	--custom-modal-animation-duration: 300ms;
+
+	position: fixed;
+	z-index: 2100;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+
+	.blurred-backdrop {
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		contain: strict;
+		cursor: pointer;
+		//touch-action: none;
+		background-color: rgba(220,220,220,0.6);
+		z-index: 2100;
+
+		&.appear {
+			animation: appear var(--custom-modal-animation-duration) ease-in-out 1;
+			backdrop-filter: saturate(188%) blur(15px);
+			opacity: 1;
+		}
+
+		&.disappear {
+			animation: disappear var(--custom-modal-animation-duration) ease-in-out 1;
+			backdrop-filter: saturate(0) blur(0);
+			opacity: 0;
+		}
+
+		@keyframes appear {
+			from {
+				backdrop-filter: saturate(0) blur(0);
+				opacity: 0;
+			}
+
+			to {
+				backdrop-filter: saturate(188%) blur(15px);
+				opacity: 1;
+			}
+		}
+
+		@keyframes disappear {
+			to {
+				backdrop-filter: saturate(0) blur(0px);
+				opacity: 0;
+			}
+
+			from {
+				backdrop-filter: saturate(188%) blur(15px);
+				opacity: 1;
+			}
+		}
+	}
+
+	.content {
+		border-radius: 14px;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+		width: calc(100% - 20px);
+		background-color: var(--ion-color-primary-contrast);
+		transform: translateY(100%);
+		box-shadow: 0 2px 2px 2px rgba(190,190,190,.7);
+		z-index: 2101;
+
+		&.slideUp {
+			animation: slideUp var(--custom-modal-animation-duration) ease-in-out 1;
+			transform: translateY(0);
+		}
+
+		&.slideDown {
+			animation: slideDown var(--custom-modal-animation-duration) ease-in-out 1;
+			transform: translateY(100%);
+		}
+
+		@keyframes slideUp {
+			from {
+				transform: translateY(100%);
+			}
+
+			to {
+				transform: translateY(0);
+			}
+		}
+
+		@keyframes slideDown {
+			from {
+				transform: translateY(0);
+			}
+
+			to {
+				transform: translateY(100%);
+			}
+		}
+	}
+}
+

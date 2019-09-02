@@ -1,0 +1,12 @@
+<div class="h-100 d-flex ion-justify-content-center ion-align-items-end"
+	 (pan)="$event.preventDefault()">
+	<!--<ion-backdrop></ion-backdrop>-->
+	<div class="blurred-backdrop"
+		 [ngClass]="isShown ? 'appear' : 'disappear'"
+		 (click)="onBackdropClicked()"
+	></div>
+	<div class="content"
+		 [ngClass]="isShown ? 'slideUp' : 'slideDown'">
+		<ng-content></ng-content>
+	</div>
+</div>

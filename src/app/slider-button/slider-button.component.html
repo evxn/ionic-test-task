@@ -1,0 +1,9 @@
+<div #container class="slider-container d-flex ion-align-items-center">
+	<div #button class="slider-button d-flex ion-align-items-center ion-justify-content-center">
+		<ion-icon name="arrow-forward"></ion-icon>
+		<div class="touch-area"
+			 (pan)="onPan($event)"
+		></div>
+	</div>
+	<div class="slider-label ion-text-uppercase">{{label}}</div>
+</div>
