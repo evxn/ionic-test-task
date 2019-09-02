@@ -7,6 +7,13 @@ import {
 	ViewChild
 } from '@angular/core';
 
+enum HammerEventTypes {
+	INPUT_START = 1,
+	INPUT_MOVE = 2,
+	INPUT_END = 4,
+	INPUT_CANCEL = 8
+}
+
 interface PanEvent {
 	deltaX: number;
 	deltaY: number;
@@ -14,6 +21,8 @@ interface PanEvent {
 	distance: number;
 	isFirst: boolean;
 	isFinal: boolean;
+	eventType: HammerEventTypes;
+	srcEvent: Event;
 	preventDefault: () => void;
 }
 
@@ -34,8 +43,17 @@ export class SliderButtonComponent {
 	@Output() valueChange = new EventEmitter<number>();
 
 	private animationTimer: number;
+	private listening = false;
+
+	onPanStart() {
+		this.listening = true;
+	}
 
 	onPan(event: PanEvent) {
+		if (!this.listening) {
+			return;
+		}
+
 		const container = this.container.nativeElement as Element;
 		const padding = parseInt(getComputedStyle(container).paddingLeft, 10);
 		const containerWidth = container.getBoundingClientRect().width;
@@ -48,7 +66,6 @@ export class SliderButtonComponent {
 
 			if (Math.abs(event.deltaY) > this.tolerateVerticalMovementThreshold) {
 				this.reset();
-				event.preventDefault();
 				return;
 			}
 
@@ -59,11 +76,13 @@ export class SliderButtonComponent {
 					x = 0;
 				}
 				clearTimeout(this.animationTimer);
-				this.button.nativeElement.classList.add('is-animating');
 				this.animationTimer = setTimeout( () => {
 					this.button.nativeElement.classList.remove('is-animating');
 					this.valueChange.emit(x / max);
 				}, ANIMATION_DURATION);
+
+				this.listening = false;
+				this.button.nativeElement.classList.add('is-animating');
 			} else {
 				this.valueChange.emit(x / max);
 			}
@@ -73,12 +92,17 @@ export class SliderButtonComponent {
 	}
 
 	reset(): void {
-		this.valueChange.emit(0);
-		this.button.nativeElement.style.transform = `translate3d(0,0,0)`;
 		clearTimeout(this.animationTimer);
-		this.button.nativeElement.classList.add('is-animating');
 		this.animationTimer = setTimeout( () => {
 			this.button.nativeElement.classList.remove('is-animating');
 		}, ANIMATION_DURATION);
+
+		this.listening = false;
+		this.button.nativeElement.classList.add('is-animating');
+
+		setTimeout(() => {
+			this.valueChange.emit(0);
+			this.button.nativeElement.style.transform = `translate3d(0,0,0)`;
+		});
 	}
 }
