@@ -76,7 +76,7 @@
 	--ion-grid-padding-xs: 0;
 	--ion-grid-column-padding: 0;
 
-	margin-bottom: 30px;
+	margin-bottom: 18px;
 
 	.left-side {
 		border-right: 1px var(--ion-color-dark) solid;
@@ -98,6 +98,11 @@
 }
 
 .confirmation {
+	--padding-start: 0;
+
+	font-size: 13px;
+	margin-bottom: 7px;
+
 	&.shake {
 		animation: shake 820ms cubic-bezier(.36,.07,.19,.97) both;
 	}

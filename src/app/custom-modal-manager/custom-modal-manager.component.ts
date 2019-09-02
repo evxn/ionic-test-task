@@ -15,7 +15,6 @@ export class CustomModalManagerComponent implements OnInit {
 	isShown: boolean;
 
 	async ngOnInit() {
-		console.log('init manager')
 		this.customModalRef.result.finally(() => {
 			safelyCall(this.customModalRef.componentInstance[LIFECYCLE_DID_LEAVE]);
 		});
