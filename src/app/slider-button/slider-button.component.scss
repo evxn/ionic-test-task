@@ -3,7 +3,8 @@
 
 	.slider-container {
 		background: linear-gradient(to right, #ffb600, #FF00CC);
-		box-shadow: inset 2px 2px 2px 0 rgba(var(--ion-color-medium-rgb), .3);
+		// looks even better with this
+		//box-shadow: inset 2px 2px 2px 0 rgba(var(--ion-color-medium-rgb), .3);
 		height: 50px;
 		border-radius: 25px;
 		padding: var(--slider-button-padding);
