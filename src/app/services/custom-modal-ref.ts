@@ -3,14 +3,14 @@ import {CustomModalManagerComponent} from '../custom-modal-manager/custom-modal-
 
 export class CustomModalRef<T> {
 	readonly result: Promise<any> = new Promise<any>((
-		resolve: (value?: T | PromiseLike<T>) => void,
+		resolve: (value?: any) => void,
 		reject: (reason?: any) => void
 	) => {
 		this.resolve = resolve;
 		this.reject = reject;
 	});
 
-	private resolve: (value?: T | PromiseLike<T>) => void;
+	private resolve: (value?: any) => void;
 	private reject: (reason?: any) => void;
 
 	constructor(

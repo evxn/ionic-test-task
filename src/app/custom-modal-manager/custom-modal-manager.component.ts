@@ -31,7 +31,7 @@ export class CustomModalManagerComponent implements OnInit {
 		this.customModalRef.cancel('backdrop');
 	}
 
-	onDismiss() {
+	onDismiss(): Promise<void> {
 		safelyCall(this.customModalRef.componentInstance[LIFECYCLE_WILL_LEAVE]);
 		this.isShown = false;
 
