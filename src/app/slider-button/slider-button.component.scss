@@ -5,8 +5,8 @@
 		background: linear-gradient(to right, #ffb600, #FF00CC);
 		// looks even better with this
 		//box-shadow: inset 2px 2px 2px 0 rgba(var(--ion-color-medium-rgb), .3);
-		height: 50px;
-		border-radius: 25px;
+		height: 51px;
+		border-radius: 25.5px;
 		padding: var(--slider-button-padding);
 
 		.slider-button {
@@ -35,10 +35,11 @@
 		}
 
 		.slider-label {
-			color: var(--ion-color-danger-contrast);
+			color: var(--ion-color-primary-contrast);
 			position: absolute;
 			width: calc(100% - 6px - 33px);
 			text-align: center;
+			font-size: 17.5px;
 			font-weight: 300;
 			touch-action: none;
 		}
