@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "author": "Evgeniy Malyutin",
   "homepage": "https://github.com/evxn/ionic-test-task",
-  "licence": "MIT",
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
